@@ -6,6 +6,7 @@ import { SmartImage } from "@/components/ui/SmartImage";
 import { IMAGE_SIZES } from "@/lib/image";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n";
+import { useLocalizedContent, latinProps } from "@/lib/localize";
 
 export type ProjectView = "grid" | "list";
 
@@ -17,6 +18,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, index, view = "grid" }: ProjectCardProps) {
   const { tr } = useI18n();
+  const { projectTitle, projectDescription, projectType, projectStatus } = useLocalizedContent();
   if (view === "list") return <ProjectRow project={project} index={index} />;
 
   return (
@@ -33,21 +35,21 @@ export function ProjectCard({ project, index, view = "grid" }: ProjectCardProps)
       <div className="flex flex-1 flex-col gap-4 pt-5">
         <header className="min-w-0">
           <div className="flex items-start justify-between gap-3">
-            <h3 className="font-['Oswald',sans-serif] text-2xl font-bold leading-tight text-card-foreground">{project.title}</h3>
+            <h3 className="font-['Oswald',sans-serif] text-2xl font-bold leading-tight text-card-foreground">{projectTitle(project)}</h3>
             {project.status && (
               <span className="shrink-0 rounded-full bg-primary px-3 py-0.5 text-[10px] font-black text-primary-foreground uppercase tracking-wider">
-                {project.status}
+                {projectStatus(project.status)}
               </span>
             )}
           </div>
           <p className="mt-2 line-clamp-2 font-sans text-xs text-card-foreground/85 leading-relaxed">
-            {project.description}
+            {projectDescription(project)}
           </p>
         </header>
 
         <div className="flex flex-wrap gap-2">
-          <Badge>{project.type}</Badge>
-          {project.client && <Badge>{project.client}</Badge>}
+          <Badge>{projectType(project.type)}</Badge>
+          {project.client && <Badge {...latinProps}>{project.client}</Badge>}
         </div>
 
         <TechStackPreview techs={project.tech} />
@@ -97,10 +99,10 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
       <div className="min-w-0">
         <div className="flex flex-wrap items-center gap-2">
           <h3 className="font-['Oswald',sans-serif] text-2xl font-bold text-card-foreground">{project.title}</h3>
-          <Badge>{project.type}</Badge>
-          {project.client && <Badge>{project.client}</Badge>}
+          <Badge>{projectType(project.type)}</Badge>
+          {project.client && <Badge {...latinProps}>{project.client}</Badge>}
         </div>
-        <p className="mt-2 line-clamp-2 font-sans text-xs text-card-foreground/85 leading-relaxed">{project.description}</p>
+        <p className="mt-2 line-clamp-2 font-sans text-xs text-card-foreground/85 leading-relaxed">{projectDescription(project)}</p>
         <div className="mt-3">
           <TechStackPreview techs={project.tech} limit={5} />
         </div>
@@ -212,7 +214,8 @@ export function TechStackPreview({ techs, limit = 3 }: TechStackPreviewProps) {
       {techs.slice(0, limit).map((tech) => (
         <span
           key={tech}
-          className="rounded-lg bg-foreground/10 border border-border px-2.5 py-1 text-xs font-semibold text-card-foreground/90"
+          dir="ltr"
+          className="keep-latin rounded-lg bg-foreground/10 border border-border px-2.5 py-1 text-xs font-semibold text-card-foreground/90"
         >
           {tech}
         </span>
