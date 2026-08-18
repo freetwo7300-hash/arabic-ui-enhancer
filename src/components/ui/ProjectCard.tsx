@@ -83,7 +83,7 @@ export function ProjectCard({ project, index, view = "grid" }: ProjectCardProps)
 
 function ProjectRow({ project, index }: { project: Project; index: number }) {
   const { tr } = useI18n();
-  const { projectTitle, projectDescription, category, projectType } = useLocalizedContent();
+  const { projectTitle, projectDescription, projectType } = useLocalizedContent();
   return (
     <motion.article
       layout
@@ -98,7 +98,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
       </div>
       <div className="min-w-0">
         <div className="flex flex-wrap items-center gap-2">
-          <h3 className="font-['Oswald',sans-serif] text-2xl font-bold text-card-foreground">{project.title}</h3>
+          <h3 className="font-['Oswald',sans-serif] text-2xl font-bold text-card-foreground">{projectTitle(project)}</h3>
           <Badge>{projectType(project.type)}</Badge>
           {project.client && <Badge {...latinProps}>{project.client}</Badge>}
         </div>
@@ -182,6 +182,7 @@ export function ProjectCardImage({
   compact = false,
   priority = false,
 }: ProjectCardImageProps) {
+  const { category } = useLocalizedContent();
   return (
     <div className={`relative overflow-hidden rounded-[1.75rem] border border-border ${compact ? "h-36" : "h-48"}`}>
       <SmartImage
@@ -197,7 +198,7 @@ export function ProjectCardImage({
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
       <span className="absolute start-3 top-3 rounded-full bg-black/40 backdrop-blur-md px-3 py-1 text-[9px] font-black tracking-wider text-white border border-white/20 uppercase">
-        {project.category}
+        {category(project.category)}
       </span>
     </div>
   );
