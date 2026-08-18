@@ -2,11 +2,13 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { experience } from "@/data";
 import { useI18n } from "@/lib/i18n";
+import { useLocalizedContent } from "@/lib/localize";
 import { motion } from "framer-motion";
 import { Briefcase, Calendar, ChevronRight } from "lucide-react";
 
 export function Experience({ showHeading = true }: { showHeading?: boolean } = {}) {
   const { tr } = useI18n();
+  const { experience: localizeExperience } = useLocalizedContent();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -47,7 +49,9 @@ export function Experience({ showHeading = true }: { showHeading?: boolean } = {
           {/* Timeline line */}
           <div className="absolute bottom-0 start-5 top-0 w-0.5 bg-gradient-to-b from-accent via-accent/50 to-transparent sm:start-8 md:left-1/2 md:-translate-x-1/2" />
 
-          {experience.map((item, index) => (
+          {experience.map((raw, index) => {
+            const item = localizeExperience(raw);
+            return (
             <motion.div key={item.company} className="relative" variants={itemVariants}>
               {/* Timeline dot */}
               <div className="absolute start-0 top-4 z-10 md:left-1/2 md:-translate-x-1/2">

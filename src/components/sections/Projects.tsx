@@ -4,9 +4,11 @@ import { Code2, ExternalLink, Rocket } from "lucide-react";
 import { projects } from "@/data";
 import { SmartImage } from "@/components/ui/SmartImage";
 import { useI18n } from "@/lib/i18n";
+import { useLocalizedContent } from "@/lib/localize";
 
 export function Projects() {
   const { tr } = useI18n();
+  const { projectTitle, projectDescription, category, projectType } = useLocalizedContent();
   // Grab the first 3 projects as featured for the homepage
   const featuredWorks = projects.slice(0, 3);
   
@@ -39,7 +41,7 @@ export function Projects() {
                         {num}
                       </span>
                       <span className="font-sans text-[10px] font-black tracking-[0.2em] text-card-foreground/80 uppercase">
-                        {project.category}
+                        {category(project.category)}
                       </span>
                     </div>
                     <div className="grid size-9 place-items-center rounded-full bg-foreground/10 border border-border text-card-foreground">
@@ -51,7 +53,7 @@ export function Projects() {
                   <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] mb-5 shadow-[0_10px_25px_rgba(0,0,0,0.25)] border border-border group-hover:border-border/60 transition-colors">
                     <SmartImage
                       src={project.image}
-                      alt={project.title}
+                      alt={projectTitle(project)}
                       fallbackStyle={project.gradient}
                       className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                     />
@@ -60,18 +62,18 @@ export function Projects() {
 
                     {/* Top-Right Badge Overlay */}
                     <div className="absolute top-3 end-3 rounded-full bg-black/40 backdrop-blur-md px-3 py-1 text-[9px] font-black tracking-wider text-white border border-white/20 uppercase">
-                      {project.type}
+                      {projectType(project.type)}
                     </div>
                   </div>
 
                   {/* Card Title & Subtitle */}
                   <h3 className="font-display text-2xl font-bold text-card-foreground leading-tight mb-2 px-1 line-clamp-1">
-                    {project.title}
+                    {projectTitle(project)}
                   </h3>
 
                   {/* Description */}
                   <p className="font-sans text-xs text-card-foreground/85 leading-relaxed mb-4 px-1 line-clamp-3">
-                    {project.description}
+                    {projectDescription(project)}
                   </p>
 
                   {/* Tags */}
@@ -79,7 +81,8 @@ export function Projects() {
                     {tags.map((t) => (
                       <span
                         key={t}
-                        className="rounded-full bg-primary/10 border border-primary/20 px-3 py-1 text-[9px] font-black tracking-widest text-primary uppercase shadow-sm"
+                        dir="ltr"
+                        className="keep-latin rounded-full bg-primary/10 border border-primary/20 px-3 py-1 text-[9px] font-black tracking-widest text-primary uppercase shadow-sm"
                       >
                         {t}
                       </span>
