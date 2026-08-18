@@ -120,6 +120,83 @@ export const t: Dict = {
   "events.tab.talks": { en: "TALKS", ar: "محاضرات" },
   "events.tab.exhibition": { en: "EXHIBITION", ar: "معارض" },
 
+  "about.page.eyebrow": { en: "SENIOR FULL STACK ENGINEER", ar: "مهندس برمجيات متكامل أول" },
+  "about.page.title": { en: "About Mostafa Samir", ar: "نبذة عن مصطفى سمير" },
+  "about.page.desc": {
+    en: "Senior Full Stack Engineer specializing in building scalable multi-tenant platforms, .NET 8 Microservices, and high-performance modern web apps.",
+    ar: "مهندس برمجيات متكامل أول متخصص في بناء منصات متعددة المستأجرين قابلة للتوسّع، وخدمات مصغّرة بـ .NET 8، وتطبيقات ويب حديثة عالية الأداء.",
+  },
+  "about.page.approach": { en: "Engineering Approach", ar: "منهجية الهندسة" },
+  "about.page.skillsCta": { en: "Skills & Tooling", ar: "المهارات والأدوات" },
+  "about.page.contactCta": { en: "Get in Touch", ar: "تواصل معي" },
+  "about.stat.years": { en: "Years Experience", ar: "سنوات خبرة" },
+  "about.stat.throughput": { en: "Throughput Boost", ar: "زيادة في الأداء" },
+  "about.stat.iot": { en: "IoT Endpoints", ar: "نقطة إنترنت أشياء" },
+  "about.stat.microservices": { en: "Clean Microservices", ar: "خدمات مصغّرة نظيفة" },
+  "about.principle.1.title": { en: "Clean Architecture & DDD", ar: "المعمارية النظيفة والتصميم المدفوع بالمجال" },
+  "about.principle.1.body": {
+    en: "Architecting .NET 8 Microservices using Clean Architecture and Domain-Driven Design (DDD) boundaries so platforms scale multi-tenancy seamlessly.",
+    ar: "تصميم خدمات مصغّرة بـ .NET 8 وفق المعمارية النظيفة وحدود التصميم المدفوع بالمجال (DDD) لتتوسّع المنصات متعددة المستأجرين بسلاسة.",
+  },
+  "about.principle.2.title": { en: "Real-Time Telemetry & SignalR", ar: "البيانات اللحظية و SignalR" },
+  "about.principle.2.body": {
+    en: "High-throughput SignalR and gRPC backend integration layers managing real-time data streams and over 1,000 IoT endpoints.",
+    ar: "طبقات تكامل خلفية عالية الإنتاجية بـ SignalR و gRPC تدير تدفّق البيانات اللحظي وأكثر من 1000 نقطة إنترنت أشياء.",
+  },
+  "about.principle.3.title": { en: "Measured Database Tuning", ar: "تحسين قواعد البيانات بالقياس" },
+  "about.principle.3.body": {
+    en: "300% system performance optimization through SQL Server query tuning, indexing, and Redis distributed caching.",
+    ar: "تحسين أداء الأنظمة بنسبة 300% عبر ضبط استعلامات SQL Server والفهرسة والتخزين المؤقت الموزّع بـ Redis.",
+  },
+  "about.principle.4.title": { en: "Full Stack Ownership", ar: "ملكية كاملة للمنتج" },
+  "about.principle.4.body": {
+    en: "End-to-end execution from database schemas and REST APIs down to Next.js, React, and Angular responsive frontends.",
+    ar: "تنفيذ متكامل من مخططات قواعد البيانات وواجهات REST وصولاً إلى واجهات Next.js و React و Angular المتجاوبة.",
+  },
+
+  "contact.page.eyebrow": { en: "AVAILABLE FOR NEW PROJECTS", ar: "متاح لمشاريع جديدة" },
+  "contact.page.title": { en: "Get In Touch", ar: "تواصل معي" },
+  "contact.page.desc": {
+    en: "Share your project requirements, tech stack, or timeline — I respond within 24 hours.",
+    ar: "شارك متطلبات مشروعك أو التقنيات أو الجدول الزمني — أرد خلال 24 ساعة.",
+  },
+  "contact.channel.email": { en: "Email", ar: "البريد الإلكتروني" },
+  "contact.channel.phone": { en: "WhatsApp / Phone", ar: "واتساب / هاتف" },
+  "contact.channel.location": { en: "Location", ar: "الموقع" },
+  "contact.channel.locationValue": {
+    en: "Tanta / Cairo, Egypt · Remote Worldwide",
+    ar: "طنطا / القاهرة، مصر · عمل عن بُعد حول العالم",
+  },
+
+  "experience.page.eyebrow": { en: "CAREER & MILESTONES", ar: "المسيرة والإنجازات" },
+  "experience.page.title": { en: "Professional Experience", ar: "الخبرة المهنية" },
+  "experience.page.desc": {
+    en: "Roles, responsibilities, and measurable engineering outcomes across enterprise marketplace systems.",
+    ar: "الأدوار والمسؤوليات والنتائج الهندسية القابلة للقياس عبر أنظمة الأسواق الرقمية للمؤسسات.",
+  },
+
+  "skills.title": { en: "Skills & Stack", ar: "المهارات والتقنيات" },
+  "skills.page.eyebrow": { en: "TECHNICAL COMPETENCIES", ar: "الكفاءات التقنية" },
+  "skills.page.desc": {
+    en: "The complete toolkit — from .NET 8 microservices down to Redis distributed caching and Next.js frontends.",
+    ar: "مجموعة الأدوات الكاملة — من الخدمات المصغّرة بـ .NET 8 إلى التخزين المؤقت الموزّع بـ Redis وواجهات Next.js.",
+  },
+  "skills.page.projectsCta": { en: "See Projects", ar: "شاهد المشاريع" },
+  "skills.page.contactCta": { en: "Work With Me", ar: "لنعمل معاً" },
+
+  "awards.title1": { en: "Credentials &", ar: "الشهادات" },
+  "awards.title2": { en: "Certifications", ar: "والاعتمادات" },
+  "awards.prev": { en: "Previous Award", ar: "السابق" },
+  "awards.next": { en: "Next Award", ar: "التالي" },
+  "awards.azure.title": { en: "Azure Fundamentals (AZ-900)", ar: "أساسيات Azure (AZ-900)" },
+  "awards.azure.body": {
+    en: "Microsoft Certified proficiency in Azure cloud architecture, DevOps, microservices & enterprise security.",
+    ar: "اعتماد من مايكروسوفت في معمارية سحابة Azure و DevOps والخدمات المصغّرة وأمن المؤسسات.",
+  },
+  "awards.learnMore": { en: "LEARN MORE", ar: "اعرف المزيد" },
+  "awards.bsc": { en: "B.Sc. in Computer Science (HTI)", ar: "بكالوريوس علوم الحاسب (HTI)" },
+  "awards.ddd": { en: "Clean Architecture & DDD Expert", ar: "خبير المعمارية النظيفة و DDD" },
+
   "common.theme": { en: "Toggle theme", ar: "تبديل المظهر" },
   "common.language": { en: "Toggle language", ar: "تبديل اللغة" },
   "common.menu": { en: "Menu", ar: "القائمة" },
