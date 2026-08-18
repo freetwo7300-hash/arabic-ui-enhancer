@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useI18n } from "@/lib/i18n";
 import { ChevronLeft, ChevronRight, Play, Award, Compass, ShieldCheck } from "lucide-react";
 
 export function Testimonials() {
+  const { tr } = useI18n();
   const [activeIdx, setActiveIdx] = useState(0);
 
   return (
@@ -15,9 +17,9 @@ export function Testimonials() {
                 No 1/3
               </span>
               <h2 className="font-['Oswald',sans-serif] text-4xl sm:text-5xl font-bold text-foreground leading-tight mb-8">
-                Credentials &
+                {tr("awards.title1")}
                 <br />
-                Certifications
+                {tr("awards.title2")}
               </h2>
             </div>
 
@@ -26,14 +28,14 @@ export function Testimonials() {
               <button
                 onClick={() => setActiveIdx((i) => (i > 0 ? i - 1 : 2))}
                 className="grid size-11 place-items-center rounded-full bg-foreground/10 border border-border text-foreground hover:bg-foreground/20 transition-all"
-                aria-label="Previous Award"
+                aria-label={tr("awards.prev")}
               >
                 <ChevronLeft className="size-5 rtl:rotate-180" />
               </button>
               <button
                 onClick={() => setActiveIdx((i) => (i < 2 ? i + 1 : 0))}
                 className="grid size-11 place-items-center rounded-full bg-foreground/10 border border-border text-foreground hover:bg-foreground/20 transition-all"
-                aria-label="Next Award"
+                aria-label={tr("awards.next")}
               >
                 <ChevronRight className="size-5 rtl:rotate-180" />
               </button>
@@ -52,13 +54,11 @@ export function Testimonials() {
               </div>
 
               <h3 className="font-['Oswald',sans-serif] text-2xl font-bold text-card-foreground mb-3 leading-tight">
-                Azure Fundamentals
-                <br />
-                (AZ-900)
+                {tr("awards.azure.title")}
               </h3>
 
               <p className="font-sans text-xs text-card-foreground/85 leading-relaxed mb-8 max-w-xs">
-                Microsoft Certified proficiency in Azure cloud architecture, DevOps, microservices & enterprise security.
+                {tr("awards.azure.body")}
               </p>
 
               <a
@@ -69,7 +69,7 @@ export function Testimonials() {
                   <Play className="size-3 fill-primary-foreground text-primary-foreground ms-0.5" />
                 </span>
                 <span className="font-sans text-xs font-black tracking-[0.2em] text-foreground uppercase">
-                  LEARN MORE
+                  {tr("awards.learnMore")}
                 </span>
               </a>
             </div>
@@ -83,7 +83,7 @@ export function Testimonials() {
                 <Compass className="size-6 text-primary" />
               </div>
               <h4 className="font-['Oswald',sans-serif] text-lg font-bold text-card-foreground mb-3 leading-tight max-w-[220px]">
-                B.Sc. in Computer Science (HTI)
+                {tr("awards.bsc")}
               </h4>
               <span className="rounded-full bg-foreground/10 px-3 py-0.5 font-sans text-[9px] font-black tracking-widest text-primary uppercase border border-border">
                 2021
@@ -96,7 +96,7 @@ export function Testimonials() {
                 <ShieldCheck className="size-6 text-primary" />
               </div>
               <h4 className="font-['Oswald',sans-serif] text-lg font-bold text-card-foreground mb-3 leading-tight max-w-[220px]">
-                Clean Architecture & DDD Expert
+                {tr("awards.ddd")}
               </h4>
               <span className="rounded-full bg-foreground/10 px-3 py-0.5 font-sans text-[9px] font-black tracking-widest text-primary uppercase border border-border">
                 2024

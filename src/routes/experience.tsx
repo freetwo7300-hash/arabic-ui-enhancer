@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ExperiencePreview } from "@/components/sections/home/ExperiencePreview";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/experience")({
   head: () => ({
@@ -19,19 +20,20 @@ export const Route = createFileRoute("/experience")({
 });
 
 function ExperiencePage() {
+  const { tr } = useI18n();
   return (
     <div className="min-h-screen select-none pt-24 pb-12 overflow-x-hidden">
       <Navbar />
       <main className="mx-auto max-w-6xl px-4 sm:px-8 md:px-12">
         <section className="py-12 text-center">
           <span className="rounded-full bg-foreground/10 px-4 py-1.5 font-sans text-xs font-black tracking-[0.25em] text-primary uppercase border border-border inline-block mb-4">
-            CAREER & MILESTONES
+            {tr("experience.page.eyebrow")}
           </span>
           <h1 className="font-['Oswald',sans-serif] text-5xl sm:text-6xl md:text-7xl font-bold text-foreground tracking-tight uppercase leading-tight mb-4">
-            Professional Experience
+            {tr("experience.page.title")}
           </h1>
           <p className="font-sans text-sm sm:text-base text-foreground/90 max-w-xl mx-auto leading-relaxed">
-            Roles, responsibilities, and measurable engineering outcomes across enterprise marketplace systems.
+            {tr("experience.page.desc")}
           </p>
         </section>
 

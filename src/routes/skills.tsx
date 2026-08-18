@@ -2,6 +2,8 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Code, Database, Cpu, Lock } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { useI18n } from "@/lib/i18n";
+import { useLocalizedContent } from "@/lib/localize";
 
 const skillGroupsData = [
   {
@@ -42,6 +44,8 @@ export const Route = createFileRoute("/skills")({
 });
 
 function SkillsPage() {
+  const { tr } = useI18n();
+  const { skillGroupTitle } = useLocalizedContent();
   return (
     <div className="min-h-screen select-none pt-24 pb-12 overflow-x-hidden">
       <Navbar />
@@ -49,13 +53,13 @@ function SkillsPage() {
         {/* Banner */}
         <section className="py-12 text-center">
           <span className="rounded-full bg-foreground/10 px-4 py-1.5 font-sans text-xs font-black tracking-[0.25em] text-primary uppercase border border-border inline-block mb-4">
-            TECHNICAL COMPETENCIES
+            {tr("skills.page.eyebrow")}
           </span>
           <h1 className="font-['Oswald',sans-serif] text-5xl sm:text-6xl md:text-7xl font-bold text-foreground tracking-tight uppercase leading-tight mb-4">
-            Skills & Stack
+            {tr("skills.title")}
           </h1>
           <p className="font-sans text-sm sm:text-base text-foreground/90 max-w-xl mx-auto leading-relaxed">
-            The complete toolkit — from .NET 8 microservices down to Redis distributed caching and Next.js frontends.
+            {tr("skills.page.desc")}
           </p>
         </section>
 
@@ -72,7 +76,7 @@ function SkillsPage() {
                     <Icon className="size-5" />
                   </div>
                   <h2 className="font-['Oswald',sans-serif] text-2xl font-bold text-card-foreground">
-                    {title}
+                    {skillGroupTitle(title)}
                   </h2>
                 </div>
 
@@ -80,6 +84,7 @@ function SkillsPage() {
                   {skills.map((s) => (
                     <span
                       key={s}
+                      dir="ltr"
                       className="rounded-full bg-foreground/10 px-4 py-1.5 font-sans text-xs font-bold text-card-foreground border border-border shadow-sm"
                     >
                       {s}
@@ -95,14 +100,14 @@ function SkillsPage() {
               to="/projects"
               className="inline-flex items-center gap-2 rounded-full bg-card px-6 py-3 font-sans text-xs font-black tracking-widest text-card-foreground uppercase shadow-md border border-border hover:scale-105 transition-transform"
             >
-              See Projects
+              {tr("skills.page.projectsCta")}
               <ArrowRight className="size-4 rtl:rotate-180" />
             </Link>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-sans text-xs font-black tracking-widest text-primary-foreground uppercase shadow-md hover:scale-105 transition-transform"
             >
-              Work With Me
+              {tr("skills.page.contactCta")}
               <ArrowRight className="size-4 rtl:rotate-180" />
             </Link>
           </div>

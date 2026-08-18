@@ -4,9 +4,11 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { skillGroups } from "@/data";
 import { useI18n } from "@/lib/i18n";
+import { useLocalizedContent } from "@/lib/localize";
 
 export function SkillsPreview() {
   const { tr } = useI18n();
+  const { skillGroupTitle } = useLocalizedContent();
   const featured = skillGroups.slice(0, 4);
 
   return (
@@ -20,12 +22,13 @@ export function SkillsPreview() {
               <div className="bg-card border border-border h-full rounded-[2rem] p-6 shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-1">
                 <h3 className="mb-4 flex items-center gap-3 text-lg font-bold">
                   <span className="size-2 rounded-full bg-accent" />
-                  {group.title}
+                  {skillGroupTitle(group.title)}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {group.skills.slice(0, 5).map((skill) => (
                     <span
                       key={skill}
+                      dir="ltr"
                       className="rounded-full border border-border bg-foreground/10 px-3 py-1.5 text-sm text-foreground/80"
                     >
                       {skill}
