@@ -80,6 +80,8 @@ export function ProjectCard({ project, index, view = "grid" }: ProjectCardProps)
 }
 
 function ProjectRow({ project, index }: { project: Project; index: number }) {
+  const { tr } = useI18n();
+  const { projectTitle, projectDescription, category, projectType } = useLocalizedContent();
   return (
     <motion.article
       layout
