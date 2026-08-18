@@ -121,7 +121,8 @@ export function Experience({ showHeading = true }: { showHeading?: boolean } = {
                 </Reveal>
               </div>
             </motion.div>
-          ))}
+            );
+          })}
 
           {/* End marker */}
           <motion.div
