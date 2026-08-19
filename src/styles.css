@@ -757,18 +757,24 @@
   }
 }
 
-/* Latin-only bits (logo, tech names, code) keep their display face. */
+/* Latin-only fragments (brand, tech names, URLs, numbers). The family is NOT
+   hard-coded here: it follows whichever `type-*` step the element carries via
+   `--type-font`, so a tech tag stays sans and the wordmark stays display.
+   That removes the old conflict where `.keep-latin` overrode the type ramp. */
 .keep-latin {
-  font-family: var(--font-display);
+  font-family: var(--type-font, var(--font-sans));
 }
 
-/* Outside @layer base so these beat Tailwind font-family / tracking utilities
-   (font-sans, font-display, arbitrary font-['Oswald'], tracking-*, uppercase)
-   when the page is in Arabic. */
+/* Arabic mode. These rules sit outside @layer base on purpose: unlayered CSS
+   beats Tailwind's utilities layer, so they win over `font-sans`,
+   `tracking-*` and `uppercase` WITHOUT `!important` — that keeps the cascade
+   predictable and leaves per-element overrides possible. */
 :root[lang="ar"] *:not(.keep-latin):not(.keep-latin *) {
   font-family: var(--font-arabic);
-  letter-spacing: normal !important;
-  text-transform: none !important;
+  /* Arabic script has no case and joins its letters: tracking and uppercase
+     break the shaping, so both are neutralised for the whole tree. */
+  letter-spacing: normal;
+  text-transform: none;
 }
 
 :root[lang="ar"] body:not(.keep-latin) {
@@ -782,8 +788,22 @@
   word-spacing: 0.02em;
 }
 
-/* Latin fragments (brand, tech names, URLs, numbers) keep their Latin face
-   and their own LTR flow so punctuation doesn't jump sides. */
+/* Arabic headings are optically lighter than Oswald at the same size, so the
+   display steps get a small size + weight compensation. */
+:root[lang="ar"] .type-display:not(.keep-latin),
+:root[lang="ar"] .type-h1:not(.keep-latin),
+:root[lang="ar"] .type-h2:not(.keep-latin),
+:root[lang="ar"] .type-h2-lg:not(.keep-latin) {
+  font-weight: 800;
+  font-size: 0.92em;
+}
+
+:root[lang="ar"] .type-h3:not(.keep-latin),
+:root[lang="ar"] .type-h4:not(.keep-latin) {
+  font-weight: 700;
+}
+
+/* Latin fragments keep their own LTR flow so punctuation doesn't jump sides. */
 :root[lang="ar"] .keep-latin {
   unicode-bidi: isolate;
 }
@@ -792,6 +812,7 @@
 :root[lang="ar"] :where(p, li, span, h1, h2, h3, h4, blockquote) {
   unicode-bidi: isolate;
 }
+
 
 /* Icons/arrows authored for LTR flip with the document direction */
 [dir="rtl"] .rtl-flip {
