@@ -56,6 +56,7 @@
   --font-display: "Oswald", "Archivo", system-ui, sans-serif;
   --font-script: "Caveat", "Segoe Script", cursive;
   --font-arabic: "Cairo", "Tajawal", "Noto Sans Arabic", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* --- Type scale ---------------------------------------------------------
    * Two extra micro steps below `text-xs`, so no component has to reach for
@@ -328,7 +329,8 @@
  * The display family is inherited from the base `h1..h6` rule below; use
  * `font-display` explicitly only on non-heading elements. */
 @utility type-display {
-  font-family: var(--font-display);
+  --type-font: var(--font-display);
+  font-family: var(--type-font);
   font-size: clamp(3.25rem, 10vw, 6.5rem);
   font-weight: 700;
   line-height: 0.86;
@@ -338,7 +340,8 @@
 }
 
 @utility type-h1 {
-  font-family: var(--font-display);
+  --type-font: var(--font-display);
+  font-family: var(--type-font);
   font-size: clamp(2.25rem, 6vw, 4.25rem);
   font-weight: 700;
   line-height: 1.02;
@@ -348,7 +351,8 @@
 }
 
 @utility type-h2 {
-  font-family: var(--font-display);
+  --type-font: var(--font-display);
+  font-family: var(--type-font);
   font-size: clamp(1.75rem, 4vw, 2.75rem);
   font-weight: 700;
   line-height: 1.08;
@@ -360,7 +364,8 @@
 /* Oversized section heading (full-bleed CTA bands). Sits between h1 and h2
  * so a page never shows two headings at the same size. */
 @utility type-h2-lg {
-  font-family: var(--font-display);
+  --type-font: var(--font-display);
+  font-family: var(--type-font);
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
   line-height: 1.04;
@@ -370,7 +375,8 @@
 }
 
 @utility type-h3 {
-  font-family: var(--font-display);
+  --type-font: var(--font-display);
+  font-family: var(--type-font);
   font-size: clamp(1.25rem, 2.2vw, 1.625rem);
   font-weight: 700;
   line-height: 1.15;
@@ -379,7 +385,8 @@
 }
 
 @utility type-h4 {
-  font-family: var(--font-display);
+  --type-font: var(--font-display);
+  font-family: var(--type-font);
   font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
   font-weight: 700;
   line-height: 1.25;
@@ -388,21 +395,24 @@
 
 /* Body copy steps. `type-lead` is the paragraph under a heading. */
 @utility type-lead {
-  font-family: var(--font-sans);
+  --type-font: var(--font-sans);
+  font-family: var(--type-font);
   font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
   font-weight: 400;
   line-height: 1.7;
 }
 
 @utility type-body {
-  font-family: var(--font-sans);
+  --type-font: var(--font-sans);
+  font-family: var(--type-font);
   font-size: 0.9375rem;
   line-height: 1.65;
 }
 
 /* Uppercase UI label (buttons, nav, chips) — one shape for all of them. */
 @utility type-label {
-  font-family: var(--font-sans);
+  --type-font: var(--font-sans);
+  font-family: var(--type-font);
   font-size: 0.75rem;
   font-weight: 700;
   line-height: 1.2;
@@ -411,7 +421,8 @@
 }
 
 @utility type-micro {
-  font-family: var(--font-sans);
+  --type-font: var(--font-sans);
+  font-family: var(--type-font);
   font-size: var(--text-2xs);
   font-weight: 700;
   line-height: 1.35;
@@ -421,7 +432,8 @@
 
 /* Handwritten accent voice — the single place the script face is allowed. */
 @utility type-script {
-  font-family: var(--font-script);
+  --type-font: var(--font-script);
+  font-family: var(--type-font);
   /* Script faces read ~15% smaller at the same px, so this step sits a touch
      above `type-h2` optically while measuring the same band. */
   font-size: clamp(2rem, 3.9vw, 3.125rem);
@@ -434,7 +446,8 @@
 /* Secondary body step — UI copy, list rows, dialog text. Replaces every
  * ad-hoc `text-sm` in app components. */
 @utility type-body-sm {
-  font-family: var(--font-sans);
+  --type-font: var(--font-sans);
+  font-family: var(--type-font);
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.6;
@@ -443,7 +456,8 @@
 /* Emphasised body run — form labels, key/value rows, inline stats. The single
  * replacement for every `type-body font-semibold` / `font-bold` pairing. */
 @utility type-body-strong {
-  font-family: var(--font-sans);
+  --type-font: var(--font-sans);
+  font-family: var(--type-font);
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.65;
@@ -452,7 +466,8 @@
 /* Small pill/badge text (tech tags, status chips). Same size as `type-micro`
  * but keeps its natural case, so tech names read as written. */
 @utility type-tag {
-  font-family: var(--font-sans);
+  --type-font: var(--font-sans);
+  font-family: var(--type-font);
   font-size: var(--text-2xs);
   font-weight: 700;
   line-height: 1.35;
@@ -462,7 +477,8 @@
 /* Dense meta line: dates, org · location, inline facts. Replaces `text-xs
  * font-semibold`. Case and color stay with the caller. */
 @utility type-meta {
-  font-family: var(--font-sans);
+  --type-font: var(--font-sans);
+  font-family: var(--type-font);
   font-size: 0.75rem;
   font-weight: 600;
   line-height: 1.5;
@@ -471,7 +487,8 @@
 
 /* Form/control text (inputs, selects, search). One shape for all fields. */
 @utility type-control {
-  font-family: var(--font-sans);
+  --type-font: var(--font-sans);
+  font-family: var(--type-font);
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.4;
@@ -480,7 +497,8 @@
 /* Brand wordmark lockup (the "MS" badge + stacked name). Size is the only
  * thing a caller may override, via `--wordmark-size`. */
 @utility type-wordmark {
-  font-family: var(--font-display);
+  --type-font: var(--font-display);
+  font-family: var(--type-font);
   font-size: var(--wordmark-size, 0.875rem);
   font-weight: 700;
   line-height: 1;
@@ -740,18 +758,24 @@
   }
 }
 
-/* Latin-only bits (logo, tech names, code) keep their display face. */
+/* Latin-only fragments (brand, tech names, URLs, numbers). The family is NOT
+   hard-coded here: it follows whichever `type-*` step the element carries via
+   `--type-font`, so a tech tag stays sans and the wordmark stays display.
+   That removes the old conflict where `.keep-latin` overrode the type ramp. */
 .keep-latin {
-  font-family: var(--font-display);
+  font-family: var(--type-font, var(--font-sans));
 }
 
-/* Outside @layer base so these beat Tailwind font-family / tracking utilities
-   (font-sans, font-display, arbitrary font-['Oswald'], tracking-*, uppercase)
-   when the page is in Arabic. */
+/* Arabic mode. These rules sit outside @layer base on purpose: unlayered CSS
+   beats Tailwind's utilities layer, so they win over `font-sans`,
+   `tracking-*` and `uppercase` WITHOUT `!important` — that keeps the cascade
+   predictable and leaves per-element overrides possible. */
 :root[lang="ar"] *:not(.keep-latin):not(.keep-latin *) {
   font-family: var(--font-arabic);
-  letter-spacing: normal !important;
-  text-transform: none !important;
+  /* Arabic script has no case and joins its letters: tracking and uppercase
+     break the shaping, so both are neutralised for the whole tree. */
+  letter-spacing: normal;
+  text-transform: none;
 }
 
 :root[lang="ar"] body:not(.keep-latin) {
@@ -765,8 +789,21 @@
   word-spacing: 0.02em;
 }
 
-/* Latin fragments (brand, tech names, URLs, numbers) keep their Latin face
-   and their own LTR flow so punctuation doesn't jump sides. */
+/* Arabic headings are optically lighter than Oswald at the same size, so the
+   display steps get a small size + weight compensation. */
+:root[lang="ar"] .type-display:not(.keep-latin),
+:root[lang="ar"] .type-h1:not(.keep-latin),
+:root[lang="ar"] .type-h2:not(.keep-latin),
+:root[lang="ar"] .type-h2-lg:not(.keep-latin) {
+  font-weight: 800;
+}
+
+:root[lang="ar"] .type-h3:not(.keep-latin),
+:root[lang="ar"] .type-h4:not(.keep-latin) {
+  font-weight: 700;
+}
+
+/* Latin fragments keep their own LTR flow so punctuation doesn't jump sides. */
 :root[lang="ar"] .keep-latin {
   unicode-bidi: isolate;
 }
@@ -775,6 +812,7 @@
 :root[lang="ar"] :where(p, li, span, h1, h2, h3, h4, blockquote) {
   unicode-bidi: isolate;
 }
+
 
 /* Icons/arrows authored for LTR flip with the document direction */
 [dir="rtl"] .rtl-flip {

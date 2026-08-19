@@ -100,7 +100,8 @@ export function LottieIcon({
     const onVisibility = () => {
       const p = playerRef.current;
       if (!p) return;
-      document.hidden ? p.pause() : p.play();
+      if (document.hidden) p.pause();
+      else p.play();
     };
     document.addEventListener("visibilitychange", onVisibility);
 
